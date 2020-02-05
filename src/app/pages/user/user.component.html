@@ -1,17 +1,29 @@
-
-
 <mat-card class="card">
   <mat-card-content>
-    <form>
-      <mat-form-field class="full-size">
-        <input matInput placeholder="Prénom" value="{{firstname}}">
-      </mat-form-field>
-      <mat-form-field class="full-size">
-        <input matInput placeholder="Nom" value="{{lastname}}">
-      </mat-form-field>
-      <mat-form-field class="full-size">
-        <input matInput placeholder="Email" value="{{email}}">
-      </mat-form-field>
-    </form>
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile [colspan]=1  [rowspan]=2>
+        <img width="100px" height="100px" mat-card-sm-image src="{{user.photo}}"/>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]=1  [rowspan]=1>
+        <mat-form-field  class="full-size">
+          <input matInput placeholder="Prénom" value="{{user.firstname}}">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]=1  [rowspan]=1>
+        <mat-form-field class="full-size">
+          <input matInput placeholder="Nom" value="{{user.lastname}}">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]=1  [rowspan]=1>
+        <mat-form-field class="full-size">
+          <input matInput placeholder="Email" value="{{user.email}}">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]=1  [rowspan]=1>
+        <mat-form-field class="full-size">
+          <input matInput placeholder="Rôle" value="{{user.role}}">
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-card-content>
 </mat-card>

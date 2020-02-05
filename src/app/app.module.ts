@@ -17,13 +17,29 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { UserComponent } from './pages/user/user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { UsersComponent } from './pages/users/users.component';
+
+
+
+export const routes: Routes = [
+  { path: '',            component: LoginComponent }, // path: '/'
+  { path: 'users',    component: UsersComponent },
+  { path: 'dashboard',    component: DashboardComponent },
+  { path: '**',          redirectTo: '' }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavComponent,
-    UserComponent
+    UserComponent,
+    DashboardComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +54,12 @@ import { UserComponent } from './pages/user/user.component';
     MatListModule,
     MatInputModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+    MatMenuModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

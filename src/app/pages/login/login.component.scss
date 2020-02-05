@@ -1,5 +1,9 @@
 .card {
   max-width: 400px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
 }
 
 .full-size {
@@ -9,4 +13,9 @@
 .button-validate{
   background-color: rebeccapurple;
   color: white;
+}
+
+.center{
+  width: 100%;
+  display: block;
 }

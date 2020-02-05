@@ -1,19 +1,20 @@
-
+<div class="center">
+  <form [formGroup]="profileForm" (ngSubmit)=onSubmit()>
     <mat-card class="card">
-      <mat-card-header>
-          <mat-card-title>Connexion</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <form>
-          <mat-form-field class="full-size">
-            <input matInput placeholder="Identifiant" value="">
-          </mat-form-field>
-          <mat-form-field class="full-size">
-            <input type="password" matInput placeholder="Mot de passe" value="">
-          </mat-form-field>
-        </form>
-      </mat-card-content>
-      <mat-card-actions>
-          <button class="full-size" color="primary" (click)="connexion()" mat-flat-button>Valider</button>
-      </mat-card-actions>
-    </mat-card>
+          <mat-card-header>
+              <mat-card-title>Connexion</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              <mat-form-field class="full-size">
+                <input matInput type="text" placeholder="Identifiant" formControlName="email" value="">
+              </mat-form-field>
+              <mat-form-field class="full-size">
+                <input type="password" matInput placeholder="Mot de passe" formControlName="password" value="">
+              </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions>
+              <button type="submit" class="full-size" color="primary" [disabled]="!profileForm.valid" mat-flat-button>Valider</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+</div>
