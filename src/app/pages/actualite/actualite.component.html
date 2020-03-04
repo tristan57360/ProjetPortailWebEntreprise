@@ -1,0 +1,7 @@
+<mat-card class="card">
+  <mat-card-content>
+      <h1>{{actualite.titre}}</h1>
+      <div innerHTML={{actualite.html}}></div>
+      <p>{{actualite.date?.toDate() | date:'dd/MM/yyyy à hh:mm:ss' }}</p>
+  </mat-card-content>
+</mat-card>

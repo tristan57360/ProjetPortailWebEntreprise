@@ -21,14 +21,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import { UsersComponent } from './pages/users/users.component';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { ActualitesComponent } from './pages/actualites/actualites.component';
+import { ActualiteComponent } from './pages/actualite/actualite.component';
+import { ActualiteNewComponent } from './pages/actualite-new/actualite-new.component';
 
 
 export const routes: Routes = [
   { path: '',            component: LoginComponent }, // path: '/'
   { path: 'users',    component: UsersComponent },
   { path: 'dashboard',    component: DashboardComponent },
+  { path: 'actualites',    component: ActualitesComponent },
+  { path: 'actualiteNew',    component: ActualiteNewComponent },
   { path: '**',          redirectTo: '' }
 ];
 
@@ -39,7 +50,10 @@ export const routes: Routes = [
     NavComponent,
     UserComponent,
     DashboardComponent,
-    UsersComponent
+    UsersComponent,
+    ActualitesComponent,
+    ActualiteComponent,
+    ActualiteNewComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +71,15 @@ export const routes: Routes = [
     MatGridListModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule,
+    AngularFireModule.initializeApp(environment.firebase, 'portailweb'), // imports firebase/app needed for everything
+    AngularFireAnalyticsModule, // dynamically imports firebase/analytics
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ],
 })
 export class AppModule { }

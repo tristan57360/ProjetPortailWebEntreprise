@@ -1,4 +1,4 @@
 <app-nav></app-nav>
 <div class="container">
-  <div *ngFor="let user of userList"><app-user [user]="user"></app-user><br/></div>
+  <div *ngFor="let user of userList"><app-user [user]="user.payload.doc.data()"></app-user><br/></div>
 </div>

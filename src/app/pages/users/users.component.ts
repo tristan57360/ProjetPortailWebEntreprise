@@ -7,10 +7,10 @@ import { UserService } from './../../service/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  userList = [];
+  userList;
 
-  getUsers(): void {
-    this.userList = this.userService.getUsers();
+  getUsers = () => {
+    this.userService.getUsers().subscribe(res => (this.userList = res));
   }
 
   constructor(private userService: UserService) { }

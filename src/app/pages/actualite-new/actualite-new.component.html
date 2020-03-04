@@ -1,0 +1,28 @@
+<app-nav></app-nav>
+<div class="container">
+  <div *ngIf="this.showAddMessage">L'actualité est ajoutée en base !</div>
+  <mat-card class="card">
+    <form [formGroup]="this.actualiteService.form">
+      <div>
+      <mat-form-field class="full-size">
+        <input matInput type="text" placeholder="Titre" formControlName="titre">
+      </mat-form-field>
+      <mat-form-field class="full-size">
+        <input matInput type="text" placeholder="Date" type="date" formControlName="date">
+      </mat-form-field>
+      </div>
+      <mat-form-field class="full-size">
+          <textarea matInput type="text" placeholder="Html" formControlName="html"></textarea>
+      </mat-form-field>
+
+      <div>
+        <button mat-button
+        (click)="onSubmit()">
+          Ajouter
+        </button>
+        <a mat-button [routerLink]="['/actualites']">Retour aux actualités</a>
+      </div>
+      </form>
+  </mat-card>
+
+</div>
