@@ -28,19 +28,31 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { environment } from '../environments/environment';
 import { ActualitesComponent } from './pages/actualites/actualites.component';
 import { ActualiteComponent } from './pages/actualite/actualite.component';
 import { ActualiteNewComponent } from './pages/actualite-new/actualite-new.component';
+import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { customClaims } from '@angular/fire/auth-guard';
+import { AuthGuard } from './service/auth.guard';
 
+const adminOnly = () => pipe(customClaims, map(claims => claims.role === 'admin'));
+const employedOnly = () => pipe(customClaims, map(claims => claims.role === 'employed'));
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
 
 export const routes: Routes = [
   { path: '',            component: LoginComponent }, // path: '/'
-  { path: 'users',    component: UsersComponent },
-  { path: 'dashboard',    component: DashboardComponent },
-  { path: 'actualites',    component: ActualitesComponent },
-  { path: 'actualiteNew',    component: ActualiteNewComponent },
-  { path: '**',          redirectTo: '' }
+  { path: 'users',    component: UsersComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard',    component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'actualites',    component: ActualitesComponent, canActivate: [AuthGuard] },
+  { path: 'actualiteNew',    component: ActualiteNewComponent, canActivate: [AuthGuard],
+  data: { roles: ['admin'] }},
+  { path: '**',          redirectTo: '' },
+  { path: 'login',          redirectTo: '' }
 ];
 
 @NgModule({
@@ -78,6 +90,9 @@ export const routes: Routes = [
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule // imports firebase/storage only needed for storage features
+  ],
+  exports: [
+     AppComponent, AngularFireAuthGuardModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],

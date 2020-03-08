@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActualiteService } from 'src/app/service/actualite.service';
 
+import { AuthService } from 'src/app/service/auth.service';
+
 @Component({
   selector: 'app-actualites',
   templateUrl: './actualites.component.html',
@@ -8,12 +10,14 @@ import { ActualiteService } from 'src/app/service/actualite.service';
 })
 export class ActualitesComponent implements OnInit {
   actualitesList;
-
+  isAdmin;
   getActualites = () => {
     this.actualiteService.getActualites().subscribe(res => (this.actualitesList = res));
   }
 
-  constructor(private actualiteService: ActualiteService) { }
+  constructor(private actualiteService: ActualiteService, private authService: AuthService) {
+    this.isAdmin = this.authService.isAdmin;
+  }
 
   ngOnInit() {
     this.getActualites();

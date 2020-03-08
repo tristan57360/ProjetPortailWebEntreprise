@@ -14,12 +14,32 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): boolean {
     const url: string = state.url;
 
-    return this.checkLogin(url);
+    if (this.checkLogin(url)){
+      const roles = next.data.roles as Array<string>;
+      if (roles !== null && roles !== undefined) {
+        if (roles.length === 0) {
+          return true;
+        } else {
+          let haveARoleInArray = false;
+          roles.forEach(role => {
+            if (this.authService.isRole(role)) {
+              haveARoleInArray = true;
+            }
+          });
+          if (haveARoleInArray) {
+            return true;
+          }
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
   }
 
   checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) { return true; }
-
+    //Function Is admin is needed here
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
 

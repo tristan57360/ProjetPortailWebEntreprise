@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
-
 import { Router } from '@angular/router';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
+import { User as UserData } from '../model/user';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -15,6 +15,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 export class AuthService {
   user: User;
+  userData: UserData;
   redirectUrl: string;
 
   constructor(private afs: AngularFirestore, public afAuth: AngularFireAuth, public router: Router) {
@@ -22,8 +23,20 @@ export class AuthService {
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
+        this.afs
+        .collection("users")
+        .doc(user.uid)
+        .snapshotChanges().subscribe(res => {
+          if (res) {
+            const userData = res.payload.data() as UserData;
+            localStorage.setItem('userData', JSON.stringify(userData));
+          } else {
+            localStorage.setItem('userData', null);
+          }
+        });
       } else {
         localStorage.setItem('user', null);
+        localStorage.setItem('userData', null);
       }
     });
   }
@@ -46,7 +59,7 @@ export class AuthService {
         })
         this.router.navigateByUrl('/login');
       },
-      err => reject(err))
+      err => reject(err));
     });
   }
 
@@ -65,5 +78,18 @@ export class AuthService {
     return user !== null;
   }
 
+  isRole(role: String): boolean {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    return userData !== null && userData.role === role;
+  }
+
+  get isAdmin(): boolean {
+    return this.isRole('admin');
+  }
+
+  get isEmployed(): boolean {
+    return this.isRole('employed');
+  }
 }
+
 

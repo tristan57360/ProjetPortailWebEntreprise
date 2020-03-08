@@ -12,5 +12,4 @@ export class UserService {
   getUsers() {
     return this.afs.collection('users').snapshotChanges();
   }
-
 }
