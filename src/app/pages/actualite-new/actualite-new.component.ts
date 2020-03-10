@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { ActualiteService } from "src/app/service/actualite.service";
-import { Router } from "@angular/router";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { Component, OnInit } from '@angular/core';
+import { ActualiteService } from 'src/app/service/actualite.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: "app-actualite-new",
-  templateUrl: "./actualite-new.component.html",
-  styleUrls: ["./actualite-new.component.scss"]
+  selector: 'app-actualite-new',
+  templateUrl: './actualite-new.component.html',
+  styleUrls: ['./actualite-new.component.scss']
 })
 export class ActualiteNewComponent implements OnInit {
   showAddMessage;

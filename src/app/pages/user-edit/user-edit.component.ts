@@ -20,16 +20,9 @@ export class UserEditComponent implements OnInit {
     private router: Router,
     private _snackBar: MatSnackBar
   ) {
-    /* this.user = { lastname:'',
-  firstname:'',
-email:'',
-role:'',
-photo:'',
-equipe:'',
-numero:'' }; */
-this.user = this.router.getCurrentNavigation().extras.state.userData;
-this.id = this.router.getCurrentNavigation().extras.state.idData;
-this.userService.form.setValue(this.user);
+    this.user = this.router.getCurrentNavigation().extras.state.userData;
+    this.id = this.router.getCurrentNavigation().extras.state.idData;
+    this.userService.form.setValue(this.user);
 }
 
   ngOnInit() {
