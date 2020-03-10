@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): boolean {
     const url: string = state.url;
 
-    if (this.checkLogin(url)){
+    if (this.checkLogin(url)) {
       const roles = next.data.roles as Array<string>;
       if (roles !== null && roles !== undefined) {
         if (roles.length === 0) {

@@ -27,7 +27,7 @@ export class UserService {
       .set({ completed: true }, { merge: true });
   }
 
-  updateUserById(id,data) {
+  updateUserById(id, data) {
     return this.afs
       .collection('users')
       .doc(id)
