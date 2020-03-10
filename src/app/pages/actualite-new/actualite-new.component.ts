@@ -12,7 +12,7 @@ export class ActualiteNewComponent implements OnInit {
   showAddMessage;
 
   constructor(
-    private actualiteService: ActualiteService,
+    public actualiteService: ActualiteService,
     private router: Router,
     private snackBar: MatSnackBar
   ) {}

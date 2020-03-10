@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Actualite } from 'src/app/model/actualite';
+import { Timestamp } from 'rxjs';
 
 @Component({
   selector: 'app-actualite',
@@ -8,10 +9,8 @@ import { Actualite } from 'src/app/model/actualite';
 })
 export class ActualiteComponent implements OnInit {
   @Input() actualite: Actualite;
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
-
 }

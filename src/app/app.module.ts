@@ -34,7 +34,7 @@ import { ActualitesComponent } from './pages/actualites/actualites.component';
 import { ActualiteComponent } from './pages/actualite/actualite.component';
 import { ActualiteNewComponent } from './pages/actualite-new/actualite-new.component';
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { pipe } from 'rxjs';
+import { pipe, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { customClaims } from '@angular/fire/auth-guard';
 import { AuthGuard } from './service/auth.guard';

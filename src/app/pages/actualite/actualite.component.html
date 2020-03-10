@@ -4,7 +4,7 @@
     <div innerHTML="{{ actualite.html }}"></div>
     <div *ngIf="actualite.date != null">
       <div style="text-align: right;">
-        {{ actualite.date?.toDate() | date: "dd/MM/yyyy à hh:mm:ss" }}
+        {{ actualite.date.seconds * 1000 | date: "dd/MM/yyyy à hh:mm:ss" }}
       </div>
     </div>
   </mat-card-content>
