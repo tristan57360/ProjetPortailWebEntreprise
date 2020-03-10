@@ -38,6 +38,9 @@ import { pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { customClaims } from '@angular/fire/auth-guard';
 import { AuthGuard } from './service/auth.guard';
+import { UserEditComponent } from './pages/user-edit/user-edit.component';
+import { GEDComponent } from './pages/ged/ged.component';
+import { DocumentComponent } from './pages/document/document.component';
 
 const adminOnly = () => pipe(customClaims, map(claims => claims.role === 'admin'));
 const employedOnly = () => pipe(customClaims, map(claims => claims.role === 'employed'));
@@ -51,8 +54,10 @@ export const routes: Routes = [
   { path: 'actualites',    component: ActualitesComponent, canActivate: [AuthGuard] },
   { path: 'actualiteNew',    component: ActualiteNewComponent, canActivate: [AuthGuard],
   data: { roles: ['admin'] }},
+  { path: 'userEdit',            component: UserEditComponent, canActivate: [AuthGuard] },
+  { path: 'GED',            component: GEDComponent, canActivate: [AuthGuard] },
   { path: '**',          redirectTo: '' },
-  { path: 'login',          redirectTo: '' }
+  { path: 'login',          redirectTo: '' },
 ];
 
 @NgModule({
@@ -65,7 +70,10 @@ export const routes: Routes = [
     UsersComponent,
     ActualitesComponent,
     ActualiteComponent,
-    ActualiteNewComponent
+    ActualiteNewComponent,
+    UserEditComponent,
+    GEDComponent,
+    DocumentComponent,
   ],
   imports: [
     BrowserModule,

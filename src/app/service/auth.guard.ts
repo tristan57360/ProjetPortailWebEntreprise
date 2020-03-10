@@ -39,7 +39,6 @@ export class AuthGuard implements CanActivate {
 
   checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) { return true; }
-    //Function Is admin is needed here
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
 

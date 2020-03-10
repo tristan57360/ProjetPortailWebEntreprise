@@ -2,28 +2,32 @@
   <mat-card-content>
     <mat-grid-list cols="3" rowHeight="100px">
       <mat-grid-tile [colspan]=1  [rowspan]=2>
-        <img width="100px" height="100px" mat-card-sm-image src="{{user.photo}}"/>
+          <img width="100px" height="100px" mat-card-sm-image src="{{user.photo}}"/>
       </mat-grid-tile>
       <mat-grid-tile [colspan]=1  [rowspan]=1>
-        <mat-form-field  class="full-size">
-          <input matInput placeholder="Prénom" value="{{user.firstname}}">
-        </mat-form-field>
+          <div class="textLeft"><h5>Prénom</h5><p>{{user.firstname}}</p></div>
       </mat-grid-tile>
       <mat-grid-tile [colspan]=1  [rowspan]=1>
-        <mat-form-field class="full-size">
-          <input matInput placeholder="Nom" value="{{user.lastname}}">
-        </mat-form-field>
+          <div class="textLeft"><h5>Nom</h5><p>{{user.lastname}}</p></div>
       </mat-grid-tile>
       <mat-grid-tile [colspan]=1  [rowspan]=1>
-        <mat-form-field class="full-size">
-          <input matInput placeholder="Email" value="{{user.email}}">
-        </mat-form-field>
+        <div class="textLeft"><h5>Email</h5><p>{{user.email}}</p></div>
       </mat-grid-tile>
       <mat-grid-tile [colspan]=1  [rowspan]=1>
-        <mat-form-field class="full-size">
-          <input matInput placeholder="Rôle" value="{{user.role}}">
-        </mat-form-field>
+        <div class="textLeft"><h5>Role</h5><p>{{user.role}}</p></div>
       </mat-grid-tile>
-    </mat-grid-list>
+      <mat-grid-tile [colspan]=1  [rowspan]=1>
+          <a *ngIf="canEdit" type="button"
+          [routerLink]="['/userEdit']"
+          [state]="{ userData:user, idData:id }"
+          mat-button>Modifier</a>
+      </mat-grid-tile>
+    <mat-grid-tile [colspan]=1  [rowspan]=1>
+        <div class="textLeft"><h5>Equipe</h5><p>{{user.equipe}}</p></div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1  [rowspan]=1>
+        <div class="textLeft"><h5>Numéro</h5><p>{{user.numero}}</p></div>
+    </mat-grid-tile>
+  </mat-grid-list>
   </mat-card-content>
 </mat-card>

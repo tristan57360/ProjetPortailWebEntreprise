@@ -19,6 +19,8 @@ exports.createUser = functions.auth.user().onCreate((user) => {
     lastname: '',
     role: 'user',
     photo: '',
+    equipe: '',
+    numero: '',
   });
 });
 

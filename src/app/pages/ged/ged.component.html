@@ -1,0 +1,8 @@
+<app-nav></app-nav>
+<div class="container">
+  <form *ngIf='isAuthorized' [formGroup]="formGroup">
+    <mat-label for="file">File:</mat-label>
+    <input formControlName="file" type="file" (change)="upload($event)"/>
+  </form>
+  <div *ngFor="let doc of docList"><app-document [document]="doc.payload.doc.data()"></app-document></div>
+</div>

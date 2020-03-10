@@ -1,5 +1,5 @@
 <app-nav></app-nav>
-<div class="container grid-container">
+<div class="container">
   <h1 class="mat-h1">Dashboard</h1>
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">

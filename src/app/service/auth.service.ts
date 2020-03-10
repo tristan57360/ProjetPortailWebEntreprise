@@ -49,20 +49,6 @@ export class AuthService {
     }
   }
 
-  async register(email: string, password: string, firstname: string, lastname: string) {
-    await new Promise((resolve, reject) => {
-      this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(userData => {
-        this.afs.collection('users').doc(userData.user.uid).set({
-          firstname: firstname,
-          lastname: lastname
-        })
-        this.router.navigateByUrl('/login');
-      },
-      err => reject(err));
-    });
-  }
-
   async sendPasswordResetEmail(passwordResetEmail: string) {
     await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
   }
@@ -89,6 +75,10 @@ export class AuthService {
 
   get isEmployed(): boolean {
     return this.isRole('employed');
+  }
+
+  get dataOfUser(): UserData {
+    return JSON.parse(localStorage.getItem('userData'));
   }
 }
 

@@ -19,14 +19,14 @@ export class ActualiteService {
   });
 
   getActualites() {
-    return this.afs.collection<Actualite>("actualites").snapshotChanges();
+    return this.afs.collection<Actualite>('actualites').snapshotChanges();
   }
 
   createActualite(data) {
     data.date = new Date();
     return new Promise<any>((resolve, reject) => {
       this.afs
-        .collection("actualites")
+        .collection('actualites')
         .add(data)
         .then(
           res => {
@@ -42,7 +42,7 @@ export class ActualiteService {
 
   updateActualite(data) {
     return this.afs
-      .collection("actualites")
+      .collection('actualites')
       .doc(data.payload.doc.id)
       .set({ completed: true }, { merge: true });
   }
