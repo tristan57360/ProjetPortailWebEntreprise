@@ -1,21 +1,21 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreDocument
-} from "@angular/fire/firestore";
-import { Actualite } from "../model/actualite";
-import { resolve } from "url";
-import { FormGroup, FormControl } from "@angular/forms";
+} from '@angular/fire/firestore';
+import { Actualite } from '../model/actualite';
+import { resolve } from 'url';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ActualiteService {
   constructor(private afs: AngularFirestore) {}
 
   form = new FormGroup({
-    titre: new FormControl(""),
-    html: new FormControl("")
+    titre: new FormControl(''),
+    html: new FormControl('')
   });
 
   getActualites() {
@@ -49,7 +49,7 @@ export class ActualiteService {
 
   deleteActualite(data) {
     return this.afs
-      .collection("actualites")
+      .collection('actualites')
       .doc(data.payload.doc.id)
       .delete();
   }

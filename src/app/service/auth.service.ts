@@ -24,7 +24,7 @@ export class AuthService {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
         this.afs
-        .collection("users")
+        .collection('users')
         .doc(user.uid)
         .snapshotChanges().subscribe(res => {
           if (res) {

@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { AngularFirestore } from "@angular/fire/firestore";
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class DocumentService {
   constructor(private firestore: AngularFirestore) {}
@@ -10,7 +10,7 @@ export class DocumentService {
   createDocument(data) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection("documents")
+        .collection('documents')
         .add(data)
         .then(
           res => {},
