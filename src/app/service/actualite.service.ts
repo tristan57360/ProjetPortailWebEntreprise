@@ -24,13 +24,13 @@ export class ActualiteService {
 
   createActualite(data) {
     data.date = new Date();
-    return new Promise<any>((resolve, reject) => {
+    return new Promise<any>((reso, reject) => {
       this.afs
         .collection('actualites')
         .add(data)
         .then(
           res => {
-            resolve(res);
+            reso(res);
           },
           err => {
             console.log(err);
