@@ -24,6 +24,6 @@ jobs:
     - name: Lint
       run: npm run lint
     - name: Build prod
-      run: ng build --prod
+      run: npm run build —- —-prod
     - name: Firebase Deploy
       run: firebase deploy
