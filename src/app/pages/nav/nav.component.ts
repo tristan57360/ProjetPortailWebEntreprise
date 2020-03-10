@@ -10,15 +10,17 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
-
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
-      disconnect(){
-          this.authService.SignOut();
-      }
-  constructor(private breakpointObserver: BreakpointObserver, private authService: AuthService) {}
-
+  disconnect() {
+    this.authService.SignOut();
+  }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private authService: AuthService
+  ) {}
 }

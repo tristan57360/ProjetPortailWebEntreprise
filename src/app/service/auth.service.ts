@@ -64,7 +64,7 @@ export class AuthService {
     return user !== null;
   }
 
-  isRole(role: String): boolean {
+  isRole(role: string): boolean {
     const userData = JSON.parse(localStorage.getItem('userData'));
     return userData !== null && userData.role === role;
   }

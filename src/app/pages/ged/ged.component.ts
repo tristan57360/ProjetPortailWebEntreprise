@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { AngularFireStorage } from "@angular/fire/storage";
-import { DocumentService } from "src/app/service/document.service";
-import { AuthService } from "src/app/service/auth.service";
-import { FormGroup, FormControl } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { DocumentService } from 'src/app/service/document.service';
+import { AuthService } from 'src/app/service/auth.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: "app-ged",
-  templateUrl: "./ged.component.html",
-  styleUrls: ["./ged.component.scss"]
+  selector: 'app-ged',
+  templateUrl: './ged.component.html',
+  styleUrls: ['./ged.component.scss']
 })
 export class GEDComponent implements OnInit {
   docList;
@@ -24,7 +24,7 @@ export class GEDComponent implements OnInit {
       this.isAuthorized = true;
     }
     this.formGroup = new FormGroup({
-      file: new FormControl("")
+      file: new FormControl('')
     });
   }
 
@@ -33,15 +33,15 @@ export class GEDComponent implements OnInit {
   }
 
   getDocuments = () =>
-    this.documentService.getDocuments().subscribe(res => (this.docList = res));
+    this.documentService.getDocuments().subscribe(res => (this.docList = res))
 
   upload(event) {
-    let name;
+    let docName;
     const file = event.target.files[0];
     this.afStorage.upload('/files/' + file.name, file).then(res => {
-      name = res.ref.name;
-      res.ref.getDownloadURL().then(res => {
-        this.documentService.createDocument({ name: name, downloadUrl: res });
+      docName = res.ref.name;
+      res.ref.getDownloadURL().then(url => {
+        this.documentService.createDocument({ name: docName, downloadUrl: url });
         this.formGroup.reset();
       });
     });

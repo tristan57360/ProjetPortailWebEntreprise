@@ -14,7 +14,7 @@ export class ActualiteNewComponent implements OnInit {
   constructor(
     private actualiteService: ActualiteService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -23,13 +23,13 @@ export class ActualiteNewComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 2000
     });
   }
 
   onSubmit() {
-    let data = this.actualiteService.form.value;
+    const data = this.actualiteService.form.value;
 
     if (data.titre != null && data.html != null) {
       this.actualiteService.createActualite(data).then(
