@@ -12,7 +12,7 @@
   <br/>
   <mat-card class="card">
     <mat-card-content>
-      <h4>Liste des fichiers</h4>
+      <h2>Liste des fichiers</h2>
       <div *ngFor="let doc of docList">
         <br /><app-document [document]="doc.payload.doc.data()"></app-document>
       </div>

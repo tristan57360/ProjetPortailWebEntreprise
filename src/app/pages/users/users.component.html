@@ -1,4 +1,16 @@
 <app-nav></app-nav>
 <div class="container">
-  <div *ngFor="let user of userList"><app-user [user]="user.payload.doc.data()" [id]="user.payload.doc.id"></app-user><br/></div>
+  <br />
+  <mat-card class="card">
+    <mat-card-content>
+      <h2>Liste des utilisateurs</h2>
+      <div *ngFor="let user of userList">
+        <app-user
+          [user]="user.payload.doc.data()"
+          [id]="user.payload.doc.id"
+        ></app-user
+        ><br />
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
