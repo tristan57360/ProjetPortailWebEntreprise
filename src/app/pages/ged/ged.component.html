@@ -3,7 +3,7 @@
   <mat-card class="card" *ngIf="isAuthorized">
     <mat-card-content>
       <form [formGroup]="formGroup">
-        <h4><mat-label for="file">Ajouter un fichier</mat-label></h4>
+        <h3><mat-label for="file">Ajouter un fichier</mat-label></h3>
         <br />
         <input formControlName="file" type="file" (change)="upload($event)" />
       </form>
