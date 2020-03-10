@@ -36,20 +36,20 @@ export class ActualiteNewComponent implements OnInit {
         res => {
           this.actualiteService.form.reset();
           this.openSnackBar(
-            "L'actualité est enregistrée en base !",
-            "Succès !"
+            'L\'actualité est enregistrée en base !',
+            'Succès !'
           );
         },
         err => {
-          this.openSnackBar("L'actualité n'est pas enregistrée !", "Echec !");
+          this.openSnackBar('L\'actualité n\'est pas enregistrée !', 'Echec !');
         }
       );
     } else if (data.titre == null) {
-      this.openSnackBar("Le champ titre est vide", "Echec !");
+      this.openSnackBar('Le champ titre est vide', 'Echec !');
     } else if (data.html == null) {
-      this.openSnackBar("Le champ HTML est vide", "Echec !");
+      this.openSnackBar('Le champ HTML est vide', 'Echec !');
     } else {
-      this.openSnackBar("Les champs sont vides", "Echec !");
+      this.openSnackBar('Les champs sont vides', 'Echec !');
     }
   }
 }

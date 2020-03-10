@@ -31,7 +31,7 @@ export class UserService {
     return this.afs
       .collection('users')
       .doc(id)
-      .set(data);
+      .set(data , { merge: true });
   }
 
   deleteUser(data) {
