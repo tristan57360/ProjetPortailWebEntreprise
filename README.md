@@ -23,11 +23,21 @@ Copier coller cette ligne de code dans un terminal afin de cloner le répertoire
 git clone https://github.com/tristan57360/ProjetPortailWebEntreprise.git
 ```
 
+### Installer les dépendances
+
 Se rendre dans le dossier cloné puis faire cette commande:
 
 ```
 npm install
 ```
+
+Puis installer angular:
+
+```
+npm install -g @angular/cli
+```
+
+### Lancer l'application
 
 Une fois les dépendances installées. Il est temps de démarrer l'application avec la commande suivante:
 

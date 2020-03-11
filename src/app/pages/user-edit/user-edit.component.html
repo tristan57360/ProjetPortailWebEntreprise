@@ -74,8 +74,11 @@
               />
             </mat-form-field>
           </mat-grid-tile>
-          <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
             <button style="float: right;" (click)="onSubmit()" mat-button>Modifier</button>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <a [routerLink]="['/users']" mat-button>Retour</a>
           </mat-grid-tile>
         </mat-grid-list>
       </mat-card-content>
