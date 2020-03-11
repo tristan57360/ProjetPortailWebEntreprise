@@ -46,6 +46,8 @@ export class AuthService {
     if (this.isLoggedIn) {
       const redirect = this.redirectUrl ? this.router.parseUrl(this.redirectUrl) : '/dashboard';
       this.router.navigateByUrl(redirect);
+    } else {
+      console.log('Erreur de connexion');
     }
   }
 

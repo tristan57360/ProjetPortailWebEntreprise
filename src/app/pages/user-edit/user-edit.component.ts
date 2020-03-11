@@ -3,6 +3,7 @@ import { UserService } from 'src/app/service/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../../model/user';
+import { AuthService } from 'src/app/service/auth.service';
 
 
 @Component({
@@ -14,10 +15,12 @@ export class UserEditComponent implements OnInit {
   showAddMessage;
   user: User;
   id;
+  isAdmin;
   constructor(
     public userService: UserService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {
     this.user = this.router.getCurrentNavigation().extras.state.userData;
     this.id = this.router.getCurrentNavigation().extras.state.idData;
@@ -26,6 +29,10 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
     this.showAddMessage = false;
+    this.isAdmin = false;
+    if (this.authService.isAdmin === true) {
+      this.isAdmin = true;
+    }
   }
 
   openSnackBar(message: string, action: string) {
