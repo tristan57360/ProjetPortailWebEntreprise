@@ -12,7 +12,8 @@ export class ActualitesComponent implements OnInit {
   actualitesList;
   isAdmin;
   getActualites = () => {
-    this.actualiteService.getActualites().subscribe(res => (this.actualitesList = res));
+    this.actualiteService.getActualites().subscribe(res => (this.actualitesList = res.sort((a,b)=>
+    b.payload.doc.data().date.seconds - a.payload.doc.data().date.seconds)));
   }
 
   constructor(private actualiteService: ActualiteService, private authService: AuthService) {
