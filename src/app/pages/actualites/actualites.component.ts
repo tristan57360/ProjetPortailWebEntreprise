@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { ActualiteService } from "src/app/service/actualite.service";
+import { Component, OnInit } from '@angular/core';
+import { ActualiteService } from 'src/app/service/actualite.service';
 
-import { AuthService } from "src/app/service/auth.service";
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
-  selector: "app-actualites",
-  templateUrl: "./actualites.component.html",
-  styleUrls: ["./actualites.component.scss"]
+  selector: 'app-actualites',
+  templateUrl: './actualites.component.html',
+  styleUrls: ['./actualites.component.scss']
 })
 export class ActualitesComponent implements OnInit {
   actualitesList;
