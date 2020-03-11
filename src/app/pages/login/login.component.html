@@ -12,6 +12,7 @@
                 <input type="password" matInput placeholder="Mot de passe" formControlName="password" value="">
               </mat-form-field>
           </mat-card-content>
+          <p *ngIf="isError">Erreur de connexion</p>
           <mat-card-actions>
               <button type="submit" class="full-size" color="primary" [disabled]="!profileForm.valid" mat-flat-button>Valider</button>
           </mat-card-actions>
